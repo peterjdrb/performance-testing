@@ -1,0 +1,22 @@
+{
+  "name": "performance-testing",
+  "version": "1.0.0",
+  "description": "Performance testing poc",
+  "main": "src/index.ts",
+  "private": true,
+  "scripts": {
+    "test": "jest",
+    "build": "tsc -b",
+    "start": "rimraf build && pnpm run build && concurrently \"tsc -b -w\" \"nodemon\""
+  },
+  "author": "Griffiths Waite",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@types/node": "^18.19.0",
+    "concurrently": "^8.2.2",
+    "nodemon": "^3.0.3",
+    "rimraf": "^5.0.5",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.3.3"
+  }
+}
