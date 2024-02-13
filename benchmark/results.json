@@ -5,6 +5,11 @@
       "timeImproved": "2024-02-13T11:32:32.227Z"
     },
     {
+      "name": "src\\fibonacci\\index5.perf.test.ts",
+      "averageInMS": 0.1951666623353958,
+      "timeImproved": "2024-02-13T11:32:32.227Z"
+    },
+    {
       "name": "src\\fibonacci\\index3.perf.test.ts",
       "averageInMS": 30.18589998781681,
       "timeImproved": "2024-02-13T11:32:32.227Z"
