@@ -1,1 +1,1 @@
-export * from './fibonacci/fibonacci';
+export * from './index';
