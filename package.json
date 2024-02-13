@@ -5,9 +5,10 @@
   "main": "src/index.ts",
   "private": true,
   "scripts": {
-    "test": "jest",
     "build": "tsc -b",
-    "start": "rimraf build && pnpm run build && concurrently \"tsc -b -w\" \"nodemon\""
+    "start:dev": "rimraf build && pnpm run build && concurrently \"tsc -b -w\" \"nodemon\"",
+    "start": "node ./build/index.js",
+    "perf": "ts-node ./benchmark/benchmark.ts"
   },
   "author": "Griffiths Waite",
   "license": "UNLICENSED",

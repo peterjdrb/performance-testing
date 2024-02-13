@@ -1,7 +1,7 @@
 {
     "watch": ["build"],
     "ignore": ["src/**/*.spec.ts"],
-    "exec": "node ./build/index.js > logs.log",
+    "exec": "node ./build/index.js",
     "delay": 1000
   }
   
