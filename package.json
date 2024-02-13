@@ -5,8 +5,8 @@
   "main": "src/index.ts",
   "private": true,
   "scripts": {
-    "build": "tsc -b",
-    "start:dev": "rimraf build && pnpm run build && concurrently \"tsc -b -w\" \"nodemon\"",
+    "build": "rimraf build &&  tsc -b",
+    "start:dev": "pnpm run build && concurrently \"tsc -b -w\" \"nodemon\"",
     "start": "node ./build/index.js",
     "perf": "ts-node ./benchmark/benchmark.ts"
   },
