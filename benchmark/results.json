@@ -2,11 +2,16 @@
     {
       "name": "src\\fibonacci\\index2.perf.test.ts",
       "averageInMS": 30.18589998781681,
-      "timeRan": "2024-02-13T11:32:32.227Z"
+      "timeImproved": "2024-02-13T11:32:32.227Z"
     },
     {
       "name": "src\\fibonacci\\index3.perf.test.ts",
       "averageInMS": 30.18589998781681,
-      "timeRan": "2024-02-13T11:32:32.227Z"
+      "timeImproved": "2024-02-13T11:32:32.227Z"
+    },
+    {
+      "name": "src\\fibonacci\\index4.perf.test.ts",
+      "averageInMS": 30.18589998781681,
+      "timeImproved": "2024-02-13T11:32:32.227Z"
     }
   ]
