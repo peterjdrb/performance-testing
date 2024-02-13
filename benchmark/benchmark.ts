@@ -1,5 +1,5 @@
 import fs from "fs";
-import { performance, PerformanceObserver } from "perf_hooks";
+import { performance, PerformanceObserver, PerformanceEntry } from "perf_hooks";
 
 const numberOfRunsToExecute = 3;
 
@@ -17,16 +17,17 @@ const importFiles = async () => {
   return tests;
 };
 
-const main = async () => {
-  const test = await importFiles();
+const runPerformanceTests = (performanceTests: [string | Buffer, any][]) => {
   // Create a PerformanceObserver to collect performance entries
   const observer = new PerformanceObserver(() => {});
   observer.observe({ entryTypes: ["measure"], buffered: true });
 
-  test.forEach(([file, performanceTest]) => {
+  performanceTests.forEach(([file, performanceTest]) => {
     for (let i = 0; i < numberOfRunsToExecute; i++) {
       if (!performanceTest) {
-        console.error(`Error in ${file}: performanceTest is not defined. Have you exported it?`);
+        console.error(
+          `Error in ${file}: performanceTest is not defined. Have you exported it?`
+        );
         break;
       }
       // Measure the performance of the fibonacci function
@@ -37,11 +38,13 @@ const main = async () => {
     }
   });
 
-  let results = performance.getEntriesByType("measure");
+  return performance.getEntriesByType("measure");
+};
 
+const colaltedTestResults = (results: PerformanceEntry[]) => {
   const uniqueFileNames = [...new Set(results.map((element) => element.name))];
 
-  const tabledResults = uniqueFileNames.flatMap((name) => {
+  return uniqueFileNames.flatMap((name) => {
     const allRuns = results.filter((result) => result.name === name);
 
     const average =
@@ -51,8 +54,14 @@ const main = async () => {
 
     return { name, average };
   });
+};
 
-  console.log(tabledResults);
+const main = async () => {
+  const performanceTests = await importFiles();
+  const results = runPerformanceTests(performanceTests);
+  const tabledResults = colaltedTestResults(results);
+
+  console.table(tabledResults);
 };
 
 main();
