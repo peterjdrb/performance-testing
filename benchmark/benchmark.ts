@@ -10,7 +10,7 @@ import { performance, PerformanceObserver, PerformanceEntry } from "perf_hooks";
 interface TestResult {
   name: string;
   averageInMS: number;
-  timeImproved: string;
+  timeRecorded: string;
 }
 
 interface PerformanceDiff extends TestResult {
@@ -85,7 +85,7 @@ const collatedTestResults = (results: PerformanceEntry[]): TestResult[] => {
         return acc + result.duration;
       }, 0) / numberOfRunsToExecute;
 
-    return { name, averageInMS, timeImproved: new Date().toISOString() };
+    return { name, averageInMS, timeRecorded: new Date().toISOString() };
   });
 };
 
