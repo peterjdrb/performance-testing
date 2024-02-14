@@ -187,6 +187,7 @@ const processResults = (results: InterpretedResults) => {
     noNoticablePerformance: noNoticableChange,
   } = results;
   console.log("************ Results ************");
+  
   if (removedPerformanceResults.length > 0) {
     console.log("Removed performance results:");
     console.table(removedPerformanceResults);
@@ -205,11 +206,7 @@ const processResults = (results: InterpretedResults) => {
   if (decreasedPerformance.length > 0) {
     console.log("Decreased performance:");
     console.table(decreasedPerformance);
-  }
-
-  if (noNoticableChange.length > 0) {
-    console.log("No noticeable change:");
-    console.table(noNoticableChange);
+    process.exit(1)
   }
 
   if (improvedPerformance.length >= 0 || newPerformanceResults.length >= 0) {
