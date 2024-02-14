@@ -18,14 +18,15 @@ interface PerformanceDiff extends TestResult {
 }
 
 interface InterpretedResults {
-  removedPerformanceResults: TestResult[];
+  removedPerformanceResults: PerformanceDiff[];
   newPerformanceResults: PerformanceDiff[];
   improvedPerformance: PerformanceDiff[];
   decreasedPerformance: PerformanceDiff[];
-  noNoticablePerformance: TestResult[];
+  noNoticablePerformance: PerformanceDiff[];
+  previousResults: PerformanceDiff[];
 }
 
-const numberOfRunsToExecute = 3;
+const numberOfRunsToExecute = 10;
 const noticeableThreshold = 0.1;
 
 // ----------------------------- FILE DEFINITION ------------------------------
@@ -175,6 +176,7 @@ const interpretResults = async (
     improvedPerformance,
     decreasedPerformance,
     noNoticablePerformance,
+    previousResults,
   };
 };
 
@@ -184,10 +186,22 @@ const processResults = (results: InterpretedResults) => {
     improvedPerformance,
     newPerformanceResults,
     removedPerformanceResults,
-    noNoticablePerformance: noNoticableChange,
+    previousResults,
   } = results;
+
+  const diffInPerformance =
+    removedPerformanceResults.length > 0 ||
+    newPerformanceResults.length > 0 ||
+    improvedPerformance.length > 0 ||
+    decreasedPerformance.length > 0;
+
+  if (!diffInPerformance) {
+    console.log("No noticable changes in performance detected");
+    process.exit();
+  }
+
   console.log("************ Results ************");
-  
+
   if (removedPerformanceResults.length > 0) {
     console.log("Removed performance results:");
     console.table(removedPerformanceResults);
@@ -206,21 +220,24 @@ const processResults = (results: InterpretedResults) => {
   if (decreasedPerformance.length > 0) {
     console.log("Decreased performance:");
     console.table(decreasedPerformance);
-    process.exit(1)
+    process.exit(1);
   }
 
   if (improvedPerformance.length >= 0 || newPerformanceResults.length >= 0) {
-    //TODO: Add a prompt to save the results
-    // //Save results
-    // fs.writeFile(
-    //   "./benchmark/results.json",
-    //   JSON.stringify([
-    //     ...newPerformanceResults,
-    //     ...improvedPerformance,
-    //     ...noNoticableChange,
-    //   ], null, 2),
-    //   "utf-8"
-    // );
+    const newResults = previousResults;
+    newResults.push(...newPerformanceResults);
+    improvedPerformance.forEach((result) => {
+      const indexOfNewResults = newResults.findIndex(
+        (res) => res.name === result.name
+      );
+      newResults[indexOfNewResults] = result;
+    });
+    //Save results
+    fs.writeFile(
+      "./benchmark/results.json",
+      JSON.stringify(newResults, null, 2),
+      "utf-8"
+    );
   }
 };
 
