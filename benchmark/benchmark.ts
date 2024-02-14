@@ -17,8 +17,16 @@ interface PerformanceDiff extends TestResult {
   percentageChange?: string;
 }
 
+interface InterpretedResults {
+  removedPerformanceResults: TestResult[];
+  newPerformanceResults: PerformanceDiff[];
+  improvedPerformance: PerformanceDiff[];
+  decreasedPerformance: PerformanceDiff[];
+  noNoticablePerformance: TestResult[];
+}
+
 const numberOfRunsToExecute = 3;
-const noticeableThreshold = 0.5;
+const noticeableThreshold = 0.1;
 
 // ----------------------------- FILE DEFINITION ------------------------------
 
@@ -81,18 +89,35 @@ const collatedTestResults = (results: PerformanceEntry[]): TestResult[] => {
   });
 };
 
-const processResults = async (results: TestResult[]) => {
+const interpretResults = async (
+  results: TestResult[]
+): Promise<InterpretedResults> => {
   const isNoticeableDifference = (previous: number, current: number) => {
     return Math.abs(current - previous) / previous > noticeableThreshold;
   };
 
-  const previousResults: TestResult[] = JSON.parse(
+  //Read previous results
+  let previousResults: TestResult[] = JSON.parse(
     await fs.readFile("./benchmark/results.json", "utf-8")
   );
+
+  //Get the results that have been removed
+  const removedPerformanceResults = previousResults.filter(
+    (previousResult) =>
+      results.findIndex((result) => result.name === previousResult.name) === -1
+  );
+
+  //Remove any previous results that are not in the current results
+  previousResults = previousResults.filter((previousResult) => {
+    return (
+      results.findIndex((result) => result.name === previousResult.name) !== -1
+    );
+  });
 
   const newPerformanceResults: PerformanceDiff[] = [];
   const improvedPerformance: PerformanceDiff[] = [];
   const decreasedPerformance: PerformanceDiff[] = [];
+  const noNoticablePerformance: PerformanceDiff[] = [];
 
   results.forEach((result) => {
     const wasPreviousResult = previousResults.find(
@@ -134,20 +159,80 @@ const processResults = async (results: TestResult[]) => {
           ...result,
           percentageChange: `${timeDifferencePercentage}%`,
         });
+      } else {
+        //No noticeable diff performance
+        noNoticablePerformance.push({
+          ...result,
+          percentageChange: `${timeDifferencePercentage}%`,
+        });
       }
     }
   });
 
-  console.log("newPerformanceResults: ", newPerformanceResults);
-  console.log("improvedPerformance: ", improvedPerformance);
-  console.log("decreasedPerformance: ", decreasedPerformance);
+  return {
+    removedPerformanceResults,
+    newPerformanceResults,
+    improvedPerformance,
+    decreasedPerformance,
+    noNoticablePerformance,
+  };
+};
+
+const processResults = (results: InterpretedResults) => {
+  const {
+    decreasedPerformance,
+    improvedPerformance,
+    newPerformanceResults,
+    removedPerformanceResults,
+    noNoticablePerformance: noNoticableChange,
+  } = results;
+  console.log("************ Results ************");
+  if (removedPerformanceResults.length > 0) {
+    console.log("Removed performance results:");
+    console.table(removedPerformanceResults);
+  }
+
+  if (newPerformanceResults.length > 0) {
+    console.log("New performance results:");
+    console.table(newPerformanceResults);
+  }
+
+  if (improvedPerformance.length > 0) {
+    console.log("Improved performance:");
+    console.table(improvedPerformance);
+  }
+
+  if (decreasedPerformance.length > 0) {
+    console.log("Decreased performance:");
+    console.table(decreasedPerformance);
+  }
+
+  if (noNoticableChange.length > 0) {
+    console.log("No noticeable change:");
+    console.table(noNoticableChange);
+  }
+
+  if (improvedPerformance.length >= 0 || newPerformanceResults.length >= 0) {
+    //TODO: Add a prompt to save the results
+    // //Save results
+    // fs.writeFile(
+    //   "./benchmark/results.json",
+    //   JSON.stringify([
+    //     ...newPerformanceResults,
+    //     ...improvedPerformance,
+    //     ...noNoticableChange,
+    //   ], null, 2),
+    //   "utf-8"
+    // );
+  }
 };
 
 const main = async () => {
   const performanceTests = await importFiles();
   const results = runPerformanceTests(performanceTests);
   const tabledResults = collatedTestResults(results);
-  await processResults(tabledResults);
+  const interpretedResults = await interpretResults(tabledResults);
+  processResults(interpretedResults);
 };
 
 main();
