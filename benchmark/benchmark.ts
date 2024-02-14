@@ -14,7 +14,7 @@ interface TestResult {
 }
 
 interface PerformanceDiff extends TestResult {
-  percentageChange?: string;
+  percentageChange?: number;
 }
 
 interface InterpretedResults {
@@ -26,7 +26,7 @@ interface InterpretedResults {
   previousResults: PerformanceDiff[];
 }
 
-const numberOfRunsToExecute = 10;
+const numberOfRunsToExecute = 3;
 const noticeableThreshold = 0.1;
 
 // ----------------------------- FILE DEFINITION ------------------------------
@@ -44,7 +44,21 @@ const importFiles = async () => {
   return tests;
 };
 
-const runPerformanceTests = (performanceTests: [string | Buffer, any][]) => {
+const runSyncOrAsync = async (test: Function) => {
+  performance.mark("start");
+
+  let result = test();
+  if (result instanceof Promise) {
+    result = await result;
+  }
+
+  performance.mark("end");
+  return result;
+};
+
+const runPerformanceTests = async (
+  performanceTests: [string | Buffer, any][]
+) => {
   // Create a PerformanceObserver to collect performance entries
   const observer = new PerformanceObserver(() => {});
   observer.observe({ entryTypes: ["measure"], buffered: true });
@@ -56,18 +70,19 @@ const runPerformanceTests = (performanceTests: [string | Buffer, any][]) => {
         performanceTests.length
       }`
     );
+    console.log(file);
+
+    if (!performanceTest) {
+      console.error(
+        `Error in ${file}: performanceTest is not defined. Have you exported it?`
+      );
+      continue;
+    }
 
     for (let i = 0; i < numberOfRunsToExecute; i++) {
-      if (!performanceTest) {
-        console.error(
-          `Error in ${file}: performanceTest is not defined. Have you exported it?`
-        );
-        break;
-      }
+      console.log(`current run ${i + 1} of ${numberOfRunsToExecute}`);
       // Measure the performance of the fibonacci function
-      performance.mark("start");
-      performanceTest();
-      performance.mark("end");
+      await runSyncOrAsync(performanceTest);
       performance.measure(file as string, "start", "end");
     }
   }
@@ -131,10 +146,10 @@ const interpretResults = async (
     } else {
       const timeDifference = result.averageInMS - wasPreviousResult.averageInMS;
       const isFaster = result.averageInMS < wasPreviousResult.averageInMS;
-      const timeDifferencePercentage = (
+      const percentageChange = +(
         (Math.abs(timeDifference) / wasPreviousResult.averageInMS) *
         100
-      ).toFixed(2);
+      ).toFixed(3);
 
       if (
         isFaster &&
@@ -146,7 +161,7 @@ const interpretResults = async (
         //Improved performance
         improvedPerformance.push({
           ...result,
-          percentageChange: `${timeDifferencePercentage}%`,
+          percentageChange,
         });
       } else if (
         !isFaster &&
@@ -158,13 +173,13 @@ const interpretResults = async (
         //Decreased performance
         decreasedPerformance.push({
           ...result,
-          percentageChange: `${timeDifferencePercentage}%`,
+          percentageChange,
         });
       } else {
         //No noticeable diff performance
         noNoticablePerformance.push({
           ...result,
-          percentageChange: `${timeDifferencePercentage}%`,
+          percentageChange,
         });
       }
     }
@@ -232,6 +247,7 @@ const processResults = (results: InterpretedResults) => {
       );
       newResults[indexOfNewResults] = result;
     });
+
     //Save results
     fs.writeFile(
       "./benchmark/results.json",
@@ -243,7 +259,7 @@ const processResults = (results: InterpretedResults) => {
 
 const main = async () => {
   const performanceTests = await importFiles();
-  const results = runPerformanceTests(performanceTests);
+  const results = await runPerformanceTests(performanceTests);
   const tabledResults = collatedTestResults(results);
   const interpretedResults = await interpretResults(tabledResults);
   processResults(interpretedResults);
