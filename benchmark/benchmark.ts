@@ -195,13 +195,12 @@ const interpretResults = async (
   };
 };
 
-const processResults = (results: InterpretedResults) => {
+const outputResults = (results: InterpretedResults) => {
   const {
     decreasedPerformance,
     improvedPerformance,
     newPerformanceResults,
     removedPerformanceResults,
-    previousResults,
   } = results;
 
   const diffInPerformance =
@@ -237,6 +236,14 @@ const processResults = (results: InterpretedResults) => {
     console.table(decreasedPerformance);
     process.exit(1);
   }
+};
+
+const saveResults = (results: InterpretedResults) => {
+  const {
+    improvedPerformance,
+    newPerformanceResults,
+    previousResults,
+  } = results;
 
   if (improvedPerformance.length >= 0 || newPerformanceResults.length >= 0) {
     const newResults = previousResults;
@@ -262,7 +269,8 @@ const main = async () => {
   const results = await runPerformanceTests(performanceTests);
   const tabledResults = collatedTestResults(results);
   const interpretedResults = await interpretResults(tabledResults);
-  processResults(interpretedResults);
+  outputResults(interpretedResults);
+  saveResults(interpretedResults);
 };
 
 main();
