@@ -1,0 +1,37 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: CheckBenchmarkHasNotChanged
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        etch-depth: ${{ github.event_name == 'pull_request' && 2 || 0 }}
+    - name: Get changed files
+      id: changed-files
+      run: |
+            if ${{ github.event_name == 'pull_request' }}; then
+                echo "changed_files=$(git diff --name-only -r HEAD^1 HEAD | xargs)" >> $GITHUB_OUTPUT
+            else
+                echo "changed_files=$(git diff --name-only ${{ github.event.before }} ${{ github.event.after }} | xargs)" >> $GITHUB_OUTPUT
+            fi
+    - name: List changed files
+      run: |
+            for file in ${{ steps.changed-files.outputs.changed_files }}; do
+                echo "$file was changed"
+            done
+      
