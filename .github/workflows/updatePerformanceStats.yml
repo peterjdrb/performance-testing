@@ -1,7 +1,7 @@
 # This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
 
-name: PerformanceStatsUpdate
+name: Update performance stats on main
 
 on:
   push:
@@ -43,8 +43,8 @@ jobs:
     - name: Update changes in GitHub repository
       if: steps.git-check.outputs.modified == 'true'
       run:  |
-        git config user.name env.GIT_NAME
-        git config user.email env.GIT_EMAIL
+        git config user.name ${{vars.GIT_NAME}}
+        git config user.email ${{vars.GIT_EMAIL}}
         git add ./benchmark/results.json
         git commit -m '[skip-ci] updated performance stats'
         git push
