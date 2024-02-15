@@ -3,7 +3,11 @@
 
 name: PerformanceCheck
 
-on:
+on:  
+  workflow_run:
+    workflows: ["PerformanceCheck"]
+    types:
+      - completed
   pull_request:
     types: [ labeled ]
 
