@@ -1,27 +1,32 @@
 [
   {
     "name": "src/fibonacci/index.perf.test.ts",
-    "averageInMS": 303002.243163000016,
-    "timeRecorded": "2024-02-15T11:17:38.171Z"
+    "averageInMS": 3094.9787976666607,
+    "timeRecorded": "2024-02-15T11:34:59.091Z",
+    "percentageChange": 98.979
   },
   {
     "name": "src/fibonacci/index2.perf.test.ts",
-    "averageInMS": 2400.900232999993023,
-    "timeRecorded": "2024-02-15T11:17:38.171Z"
+    "averageInMS": 24.82782733332715,
+    "timeRecorded": "2024-02-15T11:34:59.091Z",
+    "percentageChange": 98.966
   },
   {
     "name": "src/fibonacci/index3.perf.test.ts",
-    "averageInMS": 1000.10529933333358106,
-    "timeRecorded": "2024-02-15T11:17:38.171Z"
+    "averageInMS": 0.10149599999810259,
+    "timeRecorded": "2024-02-15T11:34:59.091Z",
+    "percentageChange": 99.99
   },
   {
     "name": "src/fibonacci/index4.perf.test.ts",
-    "averageInMS": 11505.2386796666542,
-    "timeRecorded": "2024-02-15T11:17:38.171Z"
+    "averageInMS": 1152.6401733333187,
+    "timeRecorded": "2024-02-15T11:34:59.091Z",
+    "percentageChange": 89.982
   },
   {
     "name": "src/fibonacci/index5.perf.test.ts",
-    "averageInMS": 100.38728600000225316,
-    "timeRecorded": "2024-02-15T11:17:38.171Z"
+    "averageInMS": 0.3378496666749318,
+    "timeRecorded": "2024-02-15T11:34:59.091Z",
+    "percentageChange": 99.663
   }
 ]
