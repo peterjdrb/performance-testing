@@ -5,7 +5,7 @@ name: Performance check
 
 on:
   pull_request:
-    types: [ labeled ]
+    types: [ labeled, synchronize ]
 
 jobs:
   build:
