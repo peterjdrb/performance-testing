@@ -1,1 +1,27 @@
-[]
+[
+  {
+    "name": "src/fibonacci/index.perf.test.ts",
+    "averageInMS": 3032.243163000016,
+    "timeRecorded": "2024-02-15T11:17:38.171Z"
+  },
+  {
+    "name": "src/fibonacci/index2.perf.test.ts",
+    "averageInMS": 24.900232999993023,
+    "timeRecorded": "2024-02-15T11:17:38.171Z"
+  },
+  {
+    "name": "src/fibonacci/index3.perf.test.ts",
+    "averageInMS": 0.10529933333358106,
+    "timeRecorded": "2024-02-15T11:17:38.171Z"
+  },
+  {
+    "name": "src/fibonacci/index4.perf.test.ts",
+    "averageInMS": 1155.2386796666542,
+    "timeRecorded": "2024-02-15T11:17:38.171Z"
+  },
+  {
+    "name": "src/fibonacci/index5.perf.test.ts",
+    "averageInMS": 0.38728600000225316,
+    "timeRecorded": "2024-02-15T11:17:38.171Z"
+  }
+]
