@@ -5,7 +5,6 @@ name: Performance check
 
 on:
   pull_request:
-    branches: [ "main" ]
     types: [ labeled ]
 
 jobs:
