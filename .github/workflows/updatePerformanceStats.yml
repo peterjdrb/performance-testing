@@ -43,8 +43,6 @@ jobs:
     - name: Update changes in GitHub repository
       if: steps.git-check.outputs.modified == 'true'
       run:  |
-        echo env.GIT_NAME
-        echo env.GIT_EMAIL
         git config user.name env.GIT_NAME
         git config user.email env.GIT_EMAIL
         git add ./benchmark/results.json
