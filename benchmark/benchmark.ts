@@ -38,7 +38,7 @@ const importFiles = async () => {
   const tests: Array<[string | Buffer, any]> = [];
   for (const file of files) {
     const importedTests = await import(`../src/${file}`);
-    tests.push([`src\\${file}`, importedTests.performanceTest]);
+    tests.push([`src/${file}`, importedTests.performanceTest]);
   }
 
   return tests;
