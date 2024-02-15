@@ -1,0 +1,48 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Update performance stats on main
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Setup pnpm
+      uses: pnpm/action-setup@v3.0.0
+      with:
+          version: 8
+          run_install: |
+            - recursive: true
+              args: [--frozen-lockfile, --strict-peer-dependencies]
+
+    - run: pnpm i --frozen-lockfile
+    - run: pnpm build
+
+    - name: Run the performance checks
+      run: pnpm perf
+    
+    - run: git status
+  
+
+    - name: Check for modified files
+      id: git-check
+      run: echo ::set-output name=modified::$(if [ -n "$(git status --porcelain)" ]; then echo "true"; else echo "false"; fi)
+      
+    - name: Update changes in GitHub repository
+      if: steps.git-check.outputs.modified == 'true'
+      run:  |
+        git add ./benchmark/results.json
+        git commit -m '[skip-ci] updated performance stats'
+        git push
