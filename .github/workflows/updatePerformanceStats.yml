@@ -27,9 +27,6 @@ jobs:
             - recursive: true
               args: [--frozen-lockfile, --strict-peer-dependencies]
 
-    - run: pnpm i --frozen-lockfile
-    - run: pnpm build
-
     - name: Run the performance checks
       run: pnpm perf
     
