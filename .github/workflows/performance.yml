@@ -4,10 +4,6 @@
 name: Performance check
 
 on:
-  workflow_run:
-    workflows: ["PR checks"]
-    types:
-      - completed
   pull_request:
     types: [ labeled ]
 
