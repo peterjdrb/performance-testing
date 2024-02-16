@@ -239,11 +239,8 @@ const outputResults = (results: InterpretedResults) => {
 };
 
 const saveResults = (results: InterpretedResults) => {
-  const {
-    improvedPerformance,
-    newPerformanceResults,
-    previousResults,
-  } = results;
+  const { improvedPerformance, newPerformanceResults, previousResults } =
+    results;
 
   if (improvedPerformance.length >= 0 || newPerformanceResults.length >= 0) {
     const newResults = previousResults;
@@ -271,6 +268,7 @@ const main = async () => {
   const interpretedResults = await interpretResults(tabledResults);
   outputResults(interpretedResults);
   saveResults(interpretedResults);
+  console.log("test");
 };
 
 main();
