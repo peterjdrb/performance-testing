@@ -5,7 +5,7 @@ name: PerformanceCheck
 
 on:
   workflow_run:
-    workflows: ["PRChecks"]
+    workflows: [PRChecks]
     types:
       - completed
 
