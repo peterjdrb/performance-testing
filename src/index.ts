@@ -25,4 +25,3 @@ export const fibonacciRecursion = (n: number): number => {
   
     return numbers.slice(-1)[0];
   };
-  
