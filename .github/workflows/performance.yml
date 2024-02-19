@@ -7,7 +7,7 @@ on:
   pull_request:
     types: [ labeled ]
   workflow_run:
-    workflows: [pRChecks (18.x)]
+    workflows: [pRChecks (18.x), PRChecks]
     types:
       - completed
 
