@@ -8,7 +8,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  pRChecks:
 
     runs-on: ubuntu-latest
 
