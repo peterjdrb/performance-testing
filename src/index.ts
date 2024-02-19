@@ -6,7 +6,7 @@ export const fibonacciRecursion = (n: number): number => {
   };
   
   export const asyncTest = async (ms: number) => {
-    await new Promise((resolve) => setTimeout(resolve, ms % 4));
+    await new Promise((resolve) => setTimeout(resolve, ms % 3));
   };
   
   export const fibonacci = (n: number): number => {
