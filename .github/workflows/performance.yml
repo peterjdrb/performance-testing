@@ -6,6 +6,10 @@ name: PerformanceCheck
 on:
   pull_request:
     types: [ labeled ]
+  workflow_run:
+    workflows: [pRChecks]
+    types:
+      - completed
 
 
 jobs:
