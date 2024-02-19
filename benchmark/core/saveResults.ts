@@ -5,7 +5,9 @@ export const saveResults = (results: InterpretedResults) => {
   const { improvedPerformance, newPerformanceResults, previousResults } =
     results;
 
-  if (improvedPerformance.length >= 0 || newPerformanceResults.length >= 0) {
+  const dryRun = process.argv.find((arg) => arg.toLowerCase() === '--dry-run')
+
+  if (!dryRun && (improvedPerformance.length >= 0 || newPerformanceResults.length >= 0)) {
     const newResults = previousResults;
     newResults.push(...newPerformanceResults);
     improvedPerformance.forEach((result) => {
