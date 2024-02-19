@@ -1,13 +1,13 @@
 import { promises as fs } from "fs";
 
-import { noticeableThreshold } from "../config";
 import { TestResult, InterpretedResults, PerformanceDiff } from "../types";
+import { commandArgs } from "../config";
 
 export const interpretResults = async (
     results: TestResult[]
 ): Promise<InterpretedResults> => {
     const isNoticeableDifference = (previous: number, current: number) => {
-        return Math.abs(current - previous) / previous > noticeableThreshold;
+        return Math.abs(current - previous) / previous > commandArgs().threashhold();
     };
 
     //Read previous results

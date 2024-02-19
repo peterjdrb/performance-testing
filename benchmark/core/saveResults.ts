@@ -3,12 +3,13 @@ import { InterpretedResults } from "../types";
 import { commandArgs } from "../config";
 
 export const saveResults = (results: InterpretedResults) => {
-  const { improvedPerformance, newPerformanceResults, previousResults } =
-    results;
 
   if (commandArgs().dryRun) {
     return;
   }
+
+  const { improvedPerformance, newPerformanceResults, previousResults } =
+    results;
 
   if (improvedPerformance.length >= 0 || newPerformanceResults.length >= 0) {
     const newResults = previousResults;
