@@ -9,7 +9,7 @@ on:
 
 
 jobs:
-  build:
+  performanceCheck:
     if: ${{ github.event.label.name == 'performance' }}
     runs-on: ubuntu-latest
 
