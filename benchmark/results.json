@@ -10,19 +10,9 @@
     "timeRecorded": "2024-02-15T12:44:59.742Z"
   },
   {
-    "name": "src/index3.perf.test.ts",
-    "averageInMS": 0.09925166666895772,
-    "timeRecorded": "2024-02-16T10:04:21.550Z",
-    "percentageChange": 15.906
-  },
-  {
     "name": "src/index4.perf.test.ts",
-    "averageInMS": 1152.1174013333318,
-    "timeRecorded": "2024-02-15T12:44:59.742Z"
-  },
-  {
-    "name": "src/index5.perf.test.ts",
-    "averageInMS": 0.3289373333294255,
-    "timeRecorded": "2024-02-15T12:44:59.742Z"
+    "averageInMS": 704.8451133333341,
+    "timeRecorded": "2024-02-19T09:54:01.038Z",
+    "percentageChange": 38.822
   }
 ]
