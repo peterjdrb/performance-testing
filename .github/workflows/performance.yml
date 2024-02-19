@@ -5,7 +5,7 @@ name: PerformanceCheck
 
 on:
   workflow_run:
-    workflows: [pRChecks (18.x), PRChecks, pRChecks]
+    workflows: [pRChecks]
     types: [in_progress]
 
 
