@@ -12,7 +12,6 @@ on:
 
 jobs:
   performanceCheck:
-    if: ${{ github.event.label.name == 'performance' }}
     runs-on: ubuntu-latest
 
     strategy:
