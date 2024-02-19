@@ -1,13 +1,16 @@
 import { promises as fs } from "fs";
 import { InterpretedResults } from "../types";
+import { commandArgs } from "../config";
 
 export const saveResults = (results: InterpretedResults) => {
   const { improvedPerformance, newPerformanceResults, previousResults } =
     results;
 
-  const dryRun = process.argv.find((arg) => arg.toLowerCase() === '--dry-run')
+  if (commandArgs().dryRun) {
+    return;
+  }
 
-  if (!dryRun && (improvedPerformance.length >= 0 || newPerformanceResults.length >= 0)) {
+  if (improvedPerformance.length >= 0 || newPerformanceResults.length >= 0) {
     const newResults = previousResults;
     newResults.push(...newPerformanceResults);
     improvedPerformance.forEach((result) => {
