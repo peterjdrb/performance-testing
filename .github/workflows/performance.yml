@@ -28,4 +28,4 @@ jobs:
             - recursive: true
               args: [--frozen-lockfile, --strict-peer-dependencies]
 
-    - run: pnpm perf
+    - run: pnpm perf --dry-run
