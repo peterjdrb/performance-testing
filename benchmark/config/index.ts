@@ -12,9 +12,7 @@ export const commandArgs = () => {
 
             if (passedIn) {
                 noticeableThreshold = +passedIn.split("=")[1];
-                if (isNaN(noticeableThreshold)) {
-                    console.error("The noticeableThreshold arg must be a decimal between 0 and 1 inclusive")
-                }
+
             }
 
             return noticeableThreshold
