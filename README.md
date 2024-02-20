@@ -22,5 +22,5 @@ You can find below the cli args you can pass in and the default values:
 | cli arg    | default value | description
 | -------- | ------- | ------- |
 | `--dry-run`  | false    | Run the performance tests without saving the results to `benchmark/results.json`
-| `--noticeableThreshold=` | 0.1     | Set the threshold when difference in performance tests are considered noticable. Must be a value greater then 0 but less than 1
+| `--noticeableThreshold=` | 0.1     | Set the threshold when difference in performance tests are considered noticeable. Must be a value greater than 0 but less than 1
 
