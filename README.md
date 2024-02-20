@@ -1,4 +1,4 @@
-# Performance testinc POC
+# Performance testing POC
 
 ## Installing
 
@@ -15,7 +15,7 @@ Run the Typescript compiler to produce a production build in **./dist**.
 Runs the performance tests using the default settings. To do this, run the below command:
 ```pnpm perf```
 
-### Cli argumnets
+### Cli arguments
 
 You can find below the cli args you can pass in and the default values:
 
