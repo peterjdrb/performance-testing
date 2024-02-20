@@ -1,8 +1,9 @@
 [
   {
     "name": "src/index.perf.test.ts",
-    "averageInMS": 3330.3096573333314,
-    "timeRecorded": "2024-02-15T12:44:59.742Z"
+    "averageInMS": 2993.3946329999985,
+    "timeRecorded": "2024-02-20T14:40:15.182Z",
+    "percentageChange": 10.117
   },
   {
     "name": "src/index2.perf.test.ts",
