@@ -1,21 +1,21 @@
-export const numberOfRunsToExecute = 3;
+import { program } from 'commander';
 
-export const commandArgs = () => {
-    const args = process.argv.slice(2);
+const defaultThreshold = 0.1
 
-    return {
-        dryRun: args.findIndex((arg) => arg.toLowerCase() === '--dry-run') !== -1,
-        threashhold: () => {
-            const cliParam = '--noticeableThreshold=';
-            const passedIn = args.find((arg) => arg.toLowerCase().startsWith(cliParam.toLowerCase()));
-            let noticeableThreshold = 0.1;
-
-            if (passedIn) {
-                noticeableThreshold = +passedIn.split("=")[1];
-
-            }
-
-            return noticeableThreshold
-        },
+const threashhold = (threshold: any) => {
+    if (isNaN(threshold) || threshold >= 1 || threshold <= 0) {
+        throw Error("Must be a decimal greater then 0 but less than 1.");
     }
+
+    return threshold;
 }
+
+program
+    .option('-d, --dry-run', 'Run the performance tests without saving the results to `benchmark/results.json`', false)
+    .option('-t, --threshold <number>', 'integer argument', threashhold, defaultThreshold);
+
+program.parse();
+program.opts()
+
+export const numberOfRunsToExecute = 3;
+export const commandArgs = program.opts();

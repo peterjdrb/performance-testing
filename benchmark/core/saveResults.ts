@@ -4,7 +4,7 @@ import { commandArgs } from "../config";
 
 export const saveResults = (results: InterpretedResults) => {
 
-  if (commandArgs().dryRun) {
+  if (commandArgs.dryRun) {
     return;
   }
 

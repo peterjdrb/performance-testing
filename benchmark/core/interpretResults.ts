@@ -7,7 +7,7 @@ export const interpretResults = async (
     results: TestResult[]
 ): Promise<InterpretedResults> => {
     const isNoticeableDifference = (previous: number, current: number) => {
-        return Math.abs(current - previous) / previous > commandArgs().threashhold();
+        return Math.abs(current - previous) / previous > commandArgs.threashhold;
     };
 
     //Read previous results
