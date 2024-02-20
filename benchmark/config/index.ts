@@ -6,7 +6,7 @@ export const commandArgs = () => {
     return {
         dryRun: args.findIndex((arg) => arg.toLowerCase() === '--dry-run') !== -1,
         threashhold: () => {
-            const cliParam = '-noticeableThreshold=';
+            const cliParam = '--noticeableThreshold=';
             const passedIn = args.find((arg) => arg.toLowerCase().startsWith(cliParam.toLowerCase()));
             let noticeableThreshold = 0.1;
 
