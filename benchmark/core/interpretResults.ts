@@ -7,7 +7,7 @@ export const interpretResults = async (
     results: TestResult[]
 ): Promise<InterpretedResults> => {
     const isNoticeableDifference = (previous: number, current: number) => {
-        return Math.abs(current - previous) / previous > commandArgs.threashhold;
+        return Math.abs(current - previous) / previous > commandArgs.threshold;
     };
 
     //Read previous results
@@ -44,10 +44,10 @@ export const interpretResults = async (
         } else {
             const timeDifference = result.averageInMS - wasPreviousResult.averageInMS;
             const isFaster = result.averageInMS < wasPreviousResult.averageInMS;
-            const percentageChange = +(
+            const percentageChange = `${(
                 (Math.abs(timeDifference) / wasPreviousResult.averageInMS) *
                 100
-            ).toFixed(3);
+            ).toFixed(3)}%`;
 
             if (
                 isFaster &&

@@ -5,7 +5,7 @@ export interface TestResult {
 }
 
 export interface PerformanceDiff extends TestResult {
-    percentageChange?: number;
+    percentageChange?: string;
 }
 
 export interface InterpretedResults {

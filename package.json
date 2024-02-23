@@ -13,6 +13,7 @@
   "author": "Griffiths Waite",
   "license": "UNLICENSED",
   "devDependencies": {
+    "@commander-js/extra-typings": "github:commander-js/extra-typings",
     "@types/node": "^18.19.0",
     "concurrently": "^8.2.2",
     "nodemon": "^3.0.3",
