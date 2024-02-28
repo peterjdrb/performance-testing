@@ -26,4 +26,8 @@ jobs:
       with:
         bun-version: latest
 
+    - name: Install Dependencies
+      run: bun install --frozen-lockfile
+
+    - name: Run performance test in dry run mode
     - run: bun perf --dry-run
