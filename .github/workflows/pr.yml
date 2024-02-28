@@ -28,7 +28,7 @@ jobs:
       run: bun install --frozen-lockfile
     
     - name: Build app
-    - run: bun run build
+      run: bun run build
 
     - name: Run unit tests
-    - run: bun test --if-present
+      run: bun test --if-present
