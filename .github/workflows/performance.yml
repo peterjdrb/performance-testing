@@ -28,5 +28,8 @@ jobs:
     - name: Install Dependencies
       run: bun install --frozen-lockfile
 
+    - name: Build app
+      run: bun run build
+
     - name: Run performance test in dry run mode
-      run: bun perf --dry-run
+      run: bun start --dry-run
