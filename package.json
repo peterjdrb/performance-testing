@@ -1,6 +1,6 @@
 {
   "name": "performance-testing",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Performance testing poc",
   "main": "src/index.ts",
   "private": true,
@@ -13,8 +13,9 @@
   "author": "Griffiths Waite",
   "license": "UNLICENSED",
   "devDependencies": {
-    "bun-types": "1.0.29",
+    "@changesets/cli": "2.27.1",
     "@commander-js/extra-typings": "12.0.0",
+    "bun-types": "1.0.29",
     "concurrently": "8.2.2",
     "nodemon": "3.0.3",
     "rimraf": "5.0.5",
