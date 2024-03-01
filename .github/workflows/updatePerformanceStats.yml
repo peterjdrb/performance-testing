@@ -27,12 +27,14 @@ jobs:
     - name: Install Dependencies
       run: bun install --frozen-lockfile
 
+    - name: Build App
+      run: bun run build
+
     - name: Run the performance checks
-      run: bun perf
+      run: bun start
     
     - name: Get latest git status
       run: git status
-  
 
     - name: Check for modified files
       id: git-check

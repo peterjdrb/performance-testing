@@ -24,7 +24,7 @@
       "ES2020"
     ],
     "forceConsistentCasingInFileNames": true,
-    "outDir": "./build",
+    "outDir": "./dist",
     "baseUrl": ".",
     // "bun-types" is the important part
     "types": [

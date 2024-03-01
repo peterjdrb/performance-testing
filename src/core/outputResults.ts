@@ -1,6 +1,6 @@
 import { InterpretedResults } from "../types";
 
-export const outputResults = (results: InterpretedResults) => {
+export const outputResults = (results: Omit<InterpretedResults, 'noNoticablePerformance' | 'previousResults'>) => {
     const {
       decreasedPerformance,
       improvedPerformance,
