@@ -2,7 +2,7 @@
   "name": "performance-testing",
   "version": "0.1.1",
   "description": "Performance testing poc",
-  "main": "src/index.ts",
+  "main": "dist/index.js",
   "private": true,
   "scripts": {
     "build": "bun rimraf build &&  tsc -b",

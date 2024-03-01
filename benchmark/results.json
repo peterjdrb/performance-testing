@@ -1,17 +1,1 @@
-[
-  {
-    "name": "src/index2.perf.test.ts",
-    "averageInMS": 15.663636666666664,
-    "timeRecorded": "2024-03-01T19:40:46.923Z"
-  },
-  {
-    "name": "src/index.perf.test.ts",
-    "averageInMS": 1875.1823256666667,
-    "timeRecorded": "2024-03-01T19:40:46.923Z"
-  },
-  {
-    "name": "src/index4.perf.test.ts",
-    "averageInMS": 713.957704,
-    "timeRecorded": "2024-03-01T19:40:46.923Z"
-  }
-]
+[]

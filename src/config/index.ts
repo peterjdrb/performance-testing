@@ -41,6 +41,7 @@ const program = new Command()
     defaultOutputDir
   ).action(({ outputDir }) => {
     if (!fs.existsSync(outputDir)) {
+      fs.mkdirSync(outputDir.slice(0, outputDir.lastIndexOf('/')), {recursive: true});
       fs.writeFileSync(outputDir, JSON.stringify([]));
     }
   })

@@ -1,28 +1,34 @@
-export const fibonacciRecursion = (n: number): number => {
-    if (n <= 1) {
-      return n;
-    }
-    return fibonacciRecursion(n - 1) + fibonacciRecursion(n - 2);
-  };
-  
-  export const asyncTest = async (ms: number) => {
-    await new Promise((resolve) => setTimeout(resolve, ms % 3));
-  };
-  
-  export const fibonacci = (n: number): number => {
-    const numbers: number[] = [];
-  
-    for (let i = 1; i <= n; i++) {
-      if (i === 1 || i === 2) {
-        numbers.push(1);
-        continue;
-      }
-  
-      let lastNumber: number = numbers[numbers.length - 1];
-      let theNumberBeforeTheLast: number = numbers[numbers.length - 2];
-      numbers.push(lastNumber + theNumberBeforeTheLast);
-    }
-  
-    return numbers.slice(-1)[0];
-  };
-  
+// ------------------------------- NODE MODULES -------------------------------
+
+import { importFiles } from "./core/importFiles";
+import { runPerformanceTests } from "./core/runPerformanceTests";
+import { collatedTestResults } from "./core/collatedTestResults";
+import { interpretResults } from "./core/interpretResults";
+import { outputResults } from "./core/outputResults";
+import { saveResults } from "./core/saveResults";
+
+// ------------------------------ CUSTOM MODULES ------------------------------
+
+// -------------------------------- VARIABLES ---------------------------------
+
+
+
+// ----------------------------- FILE DEFINITION ------------------------------
+
+const main = async () => {
+  const performanceTests = await importFiles();
+
+  if (performanceTests.length > 0) {
+    const results = await runPerformanceTests(performanceTests);
+    const tabledResults = collatedTestResults(results);
+    const interpretedResults = await interpretResults(tabledResults);
+    outputResults(interpretedResults);
+    saveResults(interpretedResults);
+    return;
+  }
+
+  console.warn("No performance test files have been detected. Do your performance test files end in .perf.test.ts?")
+
+};
+
+main();
