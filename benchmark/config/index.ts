@@ -1,6 +1,8 @@
 import { Command } from "@commander-js/extra-typings";
+import fs from "fs";
 
 const defaultThreshold = 0.1;
+const defaultOutputDir = "./benchmark/results.json";
 
 const threashhold = (threshold: any): number => {
   if (isNaN(threshold) || threshold >= 1 || threshold <= 0) {
@@ -12,10 +14,19 @@ const threashhold = (threshold: any): number => {
   return threshold;
 };
 
+const outputDir = (dir: string) => {
+  console.log("Im here")
+  if (!dir.endsWith('.json')) {
+    dir = `${dir}/results.json`
+  }
+
+  return dir
+}
+
 const program = new Command()
   .option(
     "-d, --dry-run",
-    "Run the performance tests without saving the results to `benchmark/results.json`",
+    "Run the performance tests without saving the results to the desired output location",
     false
   )
   .option(
@@ -24,7 +35,17 @@ const program = new Command()
     threashhold,
     defaultThreshold
   )
+  .option(
+    "-o, --outputDir <string>",
+    "Saves the output from the perforance testing to the provided location. If you do not include a json file in the directory, then a results.json file will be used in the provided directory",
+    outputDir,
+    defaultOutputDir
+  ).action(({ outputDir }) => {
+    if (!fs.existsSync(outputDir)) {
+      fs.writeFileSync(outputDir, JSON.stringify([]));
+    }
+  })
   .parse();
 
 export const numberOfRunsToExecute = 3;
-export const commandArgs =  program.opts();
+export const commandArgs = program.opts();
