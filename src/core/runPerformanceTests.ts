@@ -25,9 +25,8 @@ export const runPerformanceTests = async (
         const [file, performanceTest] = performanceTests[fileIndex];
         console.log(
             `Running performance test ${Number(fileIndex) + 1} of ${performanceTests.length
-            }`
+            } - ${file}`
         );
-        console.log(file);
 
         if (!performanceTest) {
             console.error(
