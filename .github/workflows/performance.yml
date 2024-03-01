@@ -20,12 +20,13 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Setup pnpm
-      uses: pnpm/action-setup@v3.0.0
+    - name: Setup bun
+      uses: oven-sh/setup-bun@v1
       with:
-          version: 8
-          run_install: |
-            - recursive: true
-              args: [--frozen-lockfile, --strict-peer-dependencies]
+        bun-version: latest
 
-    - run: pnpm perf --dry-run
+    - name: Install Dependencies
+      run: bun install --frozen-lockfile
+
+    - name: Run performance test in dry run mode
+      run: bun perf --dry-run

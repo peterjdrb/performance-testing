@@ -19,18 +19,19 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Setup pnpm
-      uses: pnpm/action-setup@v3.0.0
+    - name: Setup bun
+      uses: oven-sh/setup-bun@v1
       with:
-          version: 8
-          run_install: |
-            - recursive: true
-              args: [--frozen-lockfile, --strict-peer-dependencies]
+        bun-version: latest
+
+    - name: Install Dependencies
+      run: bun install --frozen-lockfile
 
     - name: Run the performance checks
-      run: pnpm perf
+      run: bun perf
     
-    - run: git status
+    - name: Get latest git status
+      run: git status
   
 
     - name: Check for modified files

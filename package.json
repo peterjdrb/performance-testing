@@ -5,23 +5,22 @@
   "main": "src/index.ts",
   "private": true,
   "scripts": {
-    "build": "rimraf build &&  tsc -b",
-    "start:dev": "pnpm run build && concurrently \"tsc -b -w\" \"nodemon\"",
-    "start": "node ./build/index.js",
-    "perf": "ts-node ./benchmark/benchmark.ts"
+    "build": "bun rimraf build &&  tsc -b",
+    "start:dev": "bun run build && concurrently \"tsc -b -w\" \"nodemon\"",
+    "start": "bun ./build/index.js",
+    "perf": "bun ./benchmark/benchmark.ts"
   },
   "author": "Griffiths Waite",
   "license": "UNLICENSED",
   "devDependencies": {
-    "@commander-js/extra-typings": "github:commander-js/extra-typings",
-    "@types/node": "^18.19.0",
-    "concurrently": "^8.2.2",
-    "nodemon": "^3.0.3",
-    "rimraf": "^5.0.5",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "bun-types": "1.0.29",
+    "@commander-js/extra-typings": "12.0.0",
+    "concurrently": "8.2.2",
+    "nodemon": "3.0.3",
+    "rimraf": "5.0.5",
+    "typescript": "5.3.3"
   },
   "dependencies": {
-    "commander": "^12.0.0"
+    "commander": "12.0.0"
   }
 }

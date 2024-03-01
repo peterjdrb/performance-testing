@@ -17,5 +17,7 @@
     "forceConsistentCasingInFileNames": true,
     "outDir": "./build",
     "baseUrl": ".",
+    // "bun-types" is the important part
+    "types": ["bun-types"]
   }
 }
