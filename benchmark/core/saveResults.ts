@@ -23,7 +23,7 @@ export const saveResults = (results: InterpretedResults) => {
 
     //Save results
     fs.writeFile(
-      "./benchmark/results.json",
+      commandArgs.outputDir,
       JSON.stringify(newResults, null, 2),
       "utf-8"
     );

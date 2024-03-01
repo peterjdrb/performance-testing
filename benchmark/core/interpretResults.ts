@@ -12,7 +12,7 @@ export const interpretResults = async (
 
     //Read previous results
     let previousResults: TestResult[] = JSON.parse(
-        await fs.readFile("./benchmark/results.json", "utf-8")
+        await fs.readFile(commandArgs.outputDir, "utf-8")
     );
 
     //Get the results that have been removed
