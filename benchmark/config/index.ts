@@ -15,7 +15,6 @@ const threashhold = (threshold: any): number => {
 };
 
 const outputDir = (dir: string) => {
-  console.log("Im here")
   if (!dir.endsWith('.json')) {
     dir = `${dir}/results.json`
   }
