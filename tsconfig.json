@@ -18,6 +18,7 @@
     "outDir": "./build",
     "baseUrl": ".",
     // "bun-types" is the important part
-    "types": ["bun-types"]
+    "types": ["bun-types"],
+    "declaration": true,
   }
 }
