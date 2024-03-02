@@ -1,5 +1,11 @@
 # performance-testing
 
+## 0.1.4
+
+### Patch Changes
+
+- 2e12fa0: fix: errors in package.json
+
 ## 0.1.3
 
 ### Patch Changes
