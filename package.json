@@ -3,7 +3,6 @@
   "version": "0.1.4",
   "description": "Performance testing poc",
   "main": "dist/index.js",
-  "private": true,
   "scripts": {
     "build": "bun rimraf build &&  tsc -b",
     "start:dev": "bun run build && concurrently \"tsc -b -w\" \"nodemon\"",
