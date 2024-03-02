@@ -1,3 +1,12 @@
+---
+name: Bug report
+about: Report any bugs using this template
+title: ''
+labels: bug
+assignees: ''
+
+---
+
 ## Description
 <!---Provide a more detailed introduction to the issue itself, and why you consider it to be a bug -->
 
