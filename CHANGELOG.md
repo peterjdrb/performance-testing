@@ -1,5 +1,11 @@
 # performance-testing
 
+## 0.1.3
+
+### Patch Changes
+
+- acf55d4: Npm compatible
+
 ## 0.1.2
 
 ### Patch Changes
