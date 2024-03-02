@@ -7,7 +7,8 @@
   "scripts": {
     "build": "bun rimraf build &&  tsc -b",
     "start:dev": "bun run build && concurrently \"tsc -b -w\" \"nodemon\"",
-    "start": "bun ./dist/index.js"
+    "start": "bun ./dist/index.js",
+    "release": "bun run build && bun changeset publish"
   },
   "author": "Griffiths Waite",
   "license": "UNLICENSED",
