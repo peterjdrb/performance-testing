@@ -13,7 +13,6 @@
   "license": "UNLICENSED",
   "devDependencies": {
     "@changesets/cli": "2.27.1",
-    "@commander-js/extra-typings": "12.0.0",
     "bun-types": "1.0.29",
     "concurrently": "8.2.2",
     "nodemon": "3.0.3",
@@ -21,6 +20,7 @@
     "typescript": "5.3.3"
   },
   "dependencies": {
+    "@commander-js/extra-typings": "12.0.0",
     "commander": "12.0.0"
   },
   "repository": {
