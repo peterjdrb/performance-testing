@@ -13,7 +13,8 @@
 ## Your Environment
 <!--- Include as many relevant details about the environment you use-->
 * Version used:
-* Environment name and version (e.g. PHP 5.4 on nginx 1.9.1):
-* Server type and version:
+* Node verson:
 * Operating System and version:
-* Link to your project:
+
+## Any additional information
+Please provide any additional information that you feel will be helpful here
