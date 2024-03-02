@@ -1,5 +1,11 @@
 # performance-testing
 
+## 0.2.0
+
+### Minor Changes
+
+- f1c4832: Feat: added auto publish for new versions
+
 ## 0.1.4
 
 ### Patch Changes
