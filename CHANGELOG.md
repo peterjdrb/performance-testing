@@ -1,5 +1,15 @@
 # performance-testing
 
+## 0.3.0
+
+### Minor Changes
+
+- 31fb5ba: feat: added support for javascript files
+
+### Patch Changes
+
+- 9147109: docs: Updated readme
+
 ## 0.2.3
 
 ### Patch Changes
