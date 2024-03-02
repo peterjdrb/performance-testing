@@ -1,5 +1,11 @@
 # performance-testing
 
+## 0.2.2
+
+### Patch Changes
+
+- c5a9627: fix: made changeset access public
+
 ## 0.2.1
 
 ### Patch Changes
