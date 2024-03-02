@@ -1,5 +1,11 @@
 # performance-testing
 
+## 0.2.3
+
+### Patch Changes
+
+- 3ebe247: fix: dependency not installed correctly
+
 ## 0.2.2
 
 ### Patch Changes
