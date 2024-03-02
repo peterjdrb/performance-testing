@@ -1,5 +1,29 @@
 # performance-testing
 
+## 0.2.3
+
+### Patch Changes
+
+- 3ebe247: fix: dependency not installed correctly
+
+## 0.2.2
+
+### Patch Changes
+
+- c5a9627: fix: made changeset access public
+
+## 0.2.1
+
+### Patch Changes
+
+- 387f090: fix: made package public
+
+## 0.2.0
+
+### Minor Changes
+
+- f1c4832: Feat: added auto publish for new versions
+
 ## 0.1.4
 
 ### Patch Changes
