@@ -26,5 +26,8 @@
   "repository": {
     "type": "git",
     "url": "git@github.com:peterjdrb/performance-testing.git"
- }
+  },
+  "bin": {
+    "perfTesting": "./dist/index.js"
+  }
 }
