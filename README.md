@@ -3,26 +3,22 @@
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/peterjdrb/performance-testing/blob/main/README.md)
 [![License: UNLICENSED](https://img.shields.io/badge/License-UNLICENSED-yellow.svg)](#)
 
-> A performance testing cli framework that utilizes zero dependencies. It is developer friendly and requires minimal effort to create performance tests for your application. NOTE: this is in very early stages of development and will likely have bugs.
+> A performance testing cli framework that utilizes zero dependencies. It is developer friendly and requires minimal effort to create performance tests for your application.
+>
+> **NOTE**: this is in very early stages of development and will likely have bugs.
 
 ### 🏠 [Homepage](https://github.com/peterjdrb/performance-testing)
 
 ## Install
-
+To install, install the package using your favourite package manager like below:
 ```sh
 bun i performance-testing
 ```
 
 ## Usage
-
+As this is a cli tool, simply run the below to run with the default 
 ```sh
 perfTesting
-```
-
-## Run tests
-
-```sh
-bun test
 ```
 
 ## Author
