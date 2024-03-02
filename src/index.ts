@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // ------------------------------- NODE MODULES -------------------------------
 
 import { importFiles } from "./core/importFiles";
