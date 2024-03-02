@@ -16,7 +16,7 @@ bun i performance-testing
 ```
 
 ## Usage
-As this is a cli tool, simply run the below to run with the default 
+As this is a cli tool, simply run the below cli command:
 ```sh
 perfTesting
 ```
