@@ -1,26 +1,49 @@
-# Performance testing POC
+# Welcome to Performance testing 👋
+![Version](https://img.shields.io/badge/version-0.1.4-blue.svg?cacheSeconds=2592000)
+[![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/peterjdrb/performance-testing/blob/main/README.md)
+[![License: UNLICENSED](https://img.shields.io/badge/License-UNLICENSED-yellow.svg)](#)
 
-## Installing
+> A performance testing cli framework that utilizes zero dependencies. It is developer friendly and requires minimal effort to create performance tests for your application.
+>
+> **NOTE**: this is in very early stages of development and will likely have bugs.
 
+### 🏠 [Homepage](https://github.com/peterjdrb/performance-testing)
+
+## Install
+To install, install the package using your favourite package manager like below:
+```sh
+bun i performance-testing
 ```
-pnpm install
+
+## Usage
+As this is a cli tool, simply run the below cli command:
+```sh
+perfTesting
 ```
 
-## Available pnpm Commands
+## CLI args
+This program takes in a number of arguments. You can find out what these are and their default values by running:
+```sh
+perfTesting --help
+```
 
-`pnpm build`
-Run the Typescript compiler to produce a production build in **./dist**.
+## Author
 
-## Running the performance tests
-Runs the performance tests using the default settings. To do this, run the below command:
-```pnpm perf```
+👤 **Peter Robertson**
 
-### Cli arguments
+* Github: [@peterjdrb](https://github.com/peterjdrb)
+* LinkedIn: [@peterobe](https://linkedin.com/in/peterobe)
 
-You can find below the cli args you can pass in and the default values:
+## 🤝 Contributing
 
-| cli arg    | default value | description
-| -------- | ------- | ------- |
-| `--dry-run`  | false    | Run the performance tests without saving the results to `benchmark/results.json`
-| `--noticeableThreshold=` | 0.1     | Set the threshold when difference in performance tests are considered noticeable. Must be a value greater than 0 but less than 1. For example, if you want the threshold to be 5%, then pass in `--noticeableThreshold=0.05`
+Contributions, issues and feature requests are welcome!
 
+Feel free to check [issues page](https://github.com/peterjdrb/performance-testing/issues). You can also take a look at the [contributing guide](ssh://git@github.com/peterjdrb/performance-testing/blob/master/CONTRIBUTING.md).
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
