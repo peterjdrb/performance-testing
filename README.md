@@ -21,6 +21,12 @@ As this is a cli tool, simply run the below cli command:
 perfTesting
 ```
 
+## CLI args
+This program takes in a number of arguments. You can find out what these are and their default values by running:
+```sh
+perfTesting --help
+```
+
 ## Author
 
 👤 **Peter Robertson**
