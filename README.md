@@ -1,41 +1,26 @@
-<h1 align="center">Welcome to Performance Testing 👋</h1>
-<p>
-  <img alt="Version" src="https://img.shields.io/badge/version-0.1.1-blue.svg?cacheSeconds=2592000" />
-  <a href="#" target="_blank">
-    <img alt="License: UNLICENSED" src="https://img.shields.io/badge/License-UNLICENSED-yellow.svg" />
-  </a>
-</p>
+# Performance testing POC
 
-> Performance testing poc
+## Installing
 
-## Install
-
-```sh
-bun i
+```
+pnpm install
 ```
 
-## Usage
+## Available pnpm Commands
 
-```sh
-bun start
-```
+`pnpm build`
+Run the Typescript compiler to produce a production build in **./dist**.
 
-## Run tests
+## Running the performance tests
+Runs the performance tests using the default settings. To do this, run the below command:
+```pnpm perf```
 
-```sh
-bun test
-```
+### Cli arguments
 
-## Author
+You can find below the cli args you can pass in and the default values:
 
-👤 **Peter Robertson**
+| cli arg    | default value | description
+| -------- | ------- | ------- |
+| `--dry-run`  | false    | Run the performance tests without saving the results to `benchmark/results.json`
+| `--noticeableThreshold=` | 0.1     | Set the threshold when difference in performance tests are considered noticeable. Must be a value greater than 0 but less than 1. For example, if you want the threshold to be 5%, then pass in `--noticeableThreshold=0.05`
 
-* Github: [@peterjdrb](https://github.com/peterjdrb)
-* LinkedIn: [@peterobe](https://linkedin.com/in/peterobe)
-
-## Show your support
-
-Give a ⭐️ if this project helped you!
-
-***
-_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
