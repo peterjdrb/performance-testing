@@ -2,4 +2,4 @@
 "performance-testing": patch
 ---
 
-Updated readme
+docs: Updated readme
