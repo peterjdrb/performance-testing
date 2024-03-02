@@ -1,5 +1,11 @@
 # performance-testing
 
+## 0.2.1
+
+### Patch Changes
+
+- 387f090: fix: made package public
+
 ## 0.2.0
 
 ### Minor Changes
