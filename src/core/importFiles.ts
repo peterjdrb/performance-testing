@@ -10,6 +10,11 @@ export const importFiles = async () => {
         testFiles.push(...files.filter((file) => (file as string).endsWith(`.perf.test.${ext}`)))
     })
 
+    if (testFiles.length === 0) {
+        console.warn("No performance test files have been detected. Do your performance test files end in .perf.test.ts?");
+        process.exit();
+    }
+    
     const tests: Array<[string | Buffer, any]> = [];
 
     for (const file of testFiles) {

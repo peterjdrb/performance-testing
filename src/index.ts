@@ -19,17 +19,12 @@ import { saveResults } from "./core/saveResults";
 
 const main = async () => {
   const performanceTests = await importFiles();
-
-  if (performanceTests.length > 0) {
-    const results = await runPerformanceTests(performanceTests);
-    const tabledResults = collatedTestResults(results);
-    const interpretedResults = await interpretResults(tabledResults);
-    outputResults(interpretedResults);
-    saveResults(interpretedResults);
-    return;
-  }
-
-  console.warn("No performance test files have been detected. Do your performance test files end in .perf.test.ts?")
+  const results = await runPerformanceTests(performanceTests);
+  const tabledResults = collatedTestResults(results);
+  const interpretedResults = await interpretResults(tabledResults);
+  outputResults(interpretedResults);
+  saveResults(interpretedResults);
+  return;
 
 };
 
