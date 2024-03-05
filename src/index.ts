@@ -24,8 +24,6 @@ const main = async () => {
   const interpretedResults = await interpretResults(tabledResults);
   outputResults(interpretedResults);
   saveResults(interpretedResults);
-  return;
-
 };
 
 main();
