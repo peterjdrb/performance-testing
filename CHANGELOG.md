@@ -1,5 +1,11 @@
 # performance-testing
 
+## 0.3.1
+
+### Patch Changes
+
+- a33f295: updated npmignore
+
 ## 0.3.0
 
 ### Minor Changes
