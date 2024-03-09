@@ -1,5 +1,3 @@
 # Rules from: /workspaces/performance-testing/.gitignore
 *
 !dist/**/*
-!package.json
-!readme.md
