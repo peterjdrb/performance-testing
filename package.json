@@ -29,5 +29,6 @@
   },
   "bin": {
     "perfTesting": "dist/index.js"
-  }
+  },
+  "keywords": ["performance", "testing", "test"]
 }
