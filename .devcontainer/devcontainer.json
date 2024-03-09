@@ -9,7 +9,8 @@
 			"nodeGypDependencies": true,
 			"version": "18",
 			"nvmVersion": "latest"
-		}
+		},
+		"ghcr.io/shyim/devcontainers-features/bun:0": {}
 	},
-	"postStartCommand": ["npm i -g bun","bun i", "bun run build"]
+	"postStartCommand": "bun i"
 }
