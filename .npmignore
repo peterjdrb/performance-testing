@@ -1,4 +1,3 @@
 # Rules from: /workspaces/performance-testing/.gitignore
-node_modules
-src
-benchmark
+*
+!dist/**/*
