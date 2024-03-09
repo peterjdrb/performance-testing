@@ -5,5 +5,5 @@
       "version": 18
     }
   },
-  "postCreateCommand": ["npm i -g bun", "bun i", "bun run build"]
+  "postStartCommand ": ["npm i -g bun", "bun i", "bun run build"]
 }
